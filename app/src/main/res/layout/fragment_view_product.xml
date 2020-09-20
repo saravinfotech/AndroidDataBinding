@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <import type="pluralsight.com.tabiangifts.util.BigDecimalUtil" />
 
-        <import type="pluralsight.com.tabiangifts.util.StringUtil" />
-
         <import type="android.view.View" />
+
+        <import type="pluralsight.com.tabiangifts.util.StringUtil" />
 
         <variable
             name="product"
@@ -16,10 +16,9 @@
         <variable
             name="qty"
             type="int" />
-
     </data>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/White">
@@ -48,8 +47,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="@{product.getNumberRatingsString()}"
                     android:textColor="@color/DarkGrey"
+                    android:text="@{product.numberRatingsString}"
                     android:textSize="10sp" />
 
 
@@ -63,9 +62,9 @@
                     android:layout_toLeftOf="@+id/num_ratings"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:rating="@{BigDecimalUtil.getFloat(product.rating)}"
                     android:scaleX="1.2"
                     android:scaleY="1.2"
+                    android:rating="@{BigDecimalUtil.getFloat(product.rating)}"
                     android:theme="@style/RatingBar" />
 
             </RelativeLayout>
@@ -111,8 +110,8 @@
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{product.hasSalePrice() ?  BigDecimalUtil.getValue(product.sale_price) : BigDecimalUtil.getValue(product.price)}"
                     android:textColor="@color/red2"
+                    android:text="@{product.hasSalePrice() ? BigDecimalUtil.getValue(product.sale_price) : BigDecimalUtil.getValue(product.price)}"
                     android:textSize="16sp" />
 
 
@@ -122,10 +121,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/strike_through"
-                    android:text="@{BigDecimalUtil.getValue(product.price)}"
                     android:textColor="@color/DarkGrey"
                     android:textSize="10sp"
-                    android:visibility="@{product.hasSalePrice() ? View.VISIBLE  : View.GONE}" />
+                    android:text="@{BigDecimalUtil.getValue(product.price)}"
+                    android:visibility="@{product.hasSalePrice()? View.VISIBLE : View.GONE}" />
+
 
             </LinearLayout>
 
@@ -142,8 +142,8 @@
                     android:id="@+id/quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{StringUtil.getQuantityString(qty)}"
                     android:textColor="@color/Black"
+                    android:text="@{StringUtil.getQuantityString(qty)}"
                     android:textSize="12sp" />
 
                 <ImageView

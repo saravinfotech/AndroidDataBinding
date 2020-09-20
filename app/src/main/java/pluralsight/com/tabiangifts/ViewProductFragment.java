@@ -20,20 +20,17 @@ public class ViewProductFragment extends Fragment {
 
     private static final String TAG = "ViewProductFragment";
 
-    // Data binding
-    FragmentViewProductBinding mBinding;
+    FragmentViewProductBinding dataBinding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = FragmentViewProductBinding.inflate(inflater);
+        dataBinding = FragmentViewProductBinding.inflate(inflater);
 
         Products products = new Products();
-        mBinding.setProduct(products.PRODUCTS[0]);
-
-        mBinding.setQty(1);
-
-        return mBinding.getRoot();
+        dataBinding.setProduct(products.PRODUCTS[0]);
+        dataBinding.setQty(1);
+        return dataBinding.getRoot();
     }
 
 }
